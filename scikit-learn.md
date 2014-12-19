@@ -1,6 +1,8 @@
 scikit-learn
 ===================================
-cikit-learn is a python module for machine learning built on top of numpy / scipy.
+scikit-learn is a python module for machine learning built on top of numpy / scipy.
+
+scikit-learn (formerly scikits.learn) is an open source machine learning library for the Python programming language.It features various classification, regression and clustering algorithms including support vector machines, logistic regression, naive Bayes, random forests, gradient boosting, k-means and DBSCAN, and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy.
 
 The purpose of the scikit-learn-tutorial subproject is to learn how to apply machine learning to practical situations using the algorithms implemented in the scikit-learn library.
 
