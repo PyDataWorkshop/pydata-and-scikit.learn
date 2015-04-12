@@ -1,0 +1,104 @@
+%	19.6 Select Statistical Tests	
+
+\documentclass[KSmain.tex]{subfiles} 
+\begin{document} 
+	\large
+\subsection*{Select Statistical Tests}
+
+\begin{itemize}
+\item[1] Testing for Normality  (\texttt{normaltest})
+\item[2] Kolmogorov Smirnov Test (\texttt{kstest})
+\item[3] two sample KS test
+\item[4] Shapiro Test for Normality
+\end{itemize}
+
+\subsubsection*{\texttt{normaltest}}
+In data analysis, it is often quite useful to know if a data set is normally distributed, as it lets the analysts know which subsequent statistical procedures are valied and which are not.
+\begin{itemize}
+\item \texttt{normaltest} tests for normality in an array of data. 
+\item An optional second argument provides the axis to use
+(default is to use entire array). Returns the test statistic and the \textit{p-}value of the test. 
+\item This test is a small
+sample modified version of the \textit{Jarque-Bera} test statistic.
+\end{itemize}
+\bigskip
+%================================ %
+\subsubsection*{Kolmorogorov-Smirnov Test (\texttt{kstest})}
+
+\begin{itemize}
+\item \texttt{kstest} implements the \textit{Kolmogorov-Smirnov} test. 
+\item The command requires two inputs, the data to use in the test and the
+distribution, which can be a string or a frozen random variable object.
+\item  If the distribution is provided as
+a string, then any required shape parameters are passed in the third argument using a tuple containing
+these parameters, in order.
+\end{itemize}
+\begin{framed}
+\begin{verbatim}
+>>> x = randn(100)
+>>> kstest = stats.kstest
+>>> stat, pval = kstest(x, ’norm’)
+>>> stat
+0.11526423481470172
+>>> pval
+0.12963296757465059
+>>> ncdf = stats.norm().cdf # No () on cdf to get the function
+>>> kstest(x, ncdf)
+(0.11526423481470172, 0.12963296757465059)
+>>> x = gamma.rvs(2, size = 100)
+>>> kstest(x, ’gamma’, (2,)) # (2,) contains the shape parameter
+(0.079237623453142447, 0.54096739528138205)
+>>> gcdf = gamma(2).cdf
+>>> kstest(x, gcdf)
+(0.079237623453142447, 0.54096739528138205)
+\end{verbatim}
+\end{framed}
+\bigskip
+\subsubsection*{\texttt{ks\_2samp}}
+\texttt{ks\_2samp} implements a 2-sample version of the Kolmogorov-Smirnov test. It is called \texttt{ks\_2samp(x,y)}
+where both inputs are 1-dimensonal arrays, and returns the test statistic and p-value for the null that
+the distribution of x is the same as that of y .
+\bigskip
+\subsubsection*{Shapiro-Wilk test for normality (\texttt{shapiro})}
+\texttt{shapiro }implements the Shapiro-Wilk test for normality on a 1-dimensional array of data. It returns the
+test statistic and p-value for the null of normality.
+
+\newpage
+%\section{Statsmodels}
+%\texttt{Statsmodels} is a Python module that allows users to explore data, estimate statistical models, and perform statistical tests. 
+%An extensive list of descriptive statistics, statistical tests, plotting functions, and result statistics are available for different types of 
+%data and each estimator. Researchers across fields may find that statsmodels fully meets their needs for statistical computing and data analysis 
+%in Python. 
+%
+%Features include:
+%
+%
+%\begin{itemize}
+%	
+%	\item Linear regression models
+%	
+%	\item Generalized linear models
+%	
+%	\item Discrete choice models
+%	
+%	\item Robust linear models
+%	
+%	\item Many models and functions for time series analysis
+%	
+%	\item Nonparametric estimators
+%	
+%	\item A collection of datasets for examples
+%	
+%	\item A wide range of statistical tests
+%	
+%	\item Input-output tools for producing tables in a number of formats (Text, LaTex, HTML) and for reading Stata files into NumPy and Pandas.
+%	
+%	\item Plotting functions
+%	
+%	\item Extensive unit tests to ensure correctness of results
+%	
+%	\item Many more models and extensions in development
+%	
+%\end{itemize}
+%
+\end{document}

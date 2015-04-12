@@ -1,0 +1,66 @@
+\documentclass[KSmain.tex]{subfiles} 
+\begin{document} 
+	\newpage
+	\section*{Graphical Methods}
+\subsection*{Histograms}
+\begin{itemize}
+	\item Histograms can be produced using \texttt{hist}. 
+	\item A basic histogram produced using the code below is presented
+	below.
+	
+	\item  This example sets the number of bins used in producing the histogram using the
+	keyword argument \texttt{bins}.
+\end{itemize}
+\subsection*{Adding a Title and Legend}
+Titles are added with title and legends are added with legend. \texttt{legend} requires that lines have labels,
+which is why 3 calls are made to plot – each series has its own label.
+% Executing the next code block producesa the image in figure 15.8, panel (a).
+
+\begin{framed}
+	\begin{verbatim}
+ x = cumsum(randn(100,3), axis = 0)
+ 
+ plot(x[:,0],’b’,label = ’Series 1’)
+ hold(True)
+ plot(x[:,1],’g.’,label = ’Series 2’)
+ plot(x[:,2],’r:’,label = ’Series 3’)
+ 
+ legend()
+ title(’Basic Legend’)
+	\end{verbatim}
+\end{framed}
+
+\begin{itemize}
+\item \texttt{legend} takes keyword arguments which can be used to change its location (loc and an integer, see the
+docstring), remove the frame (frameon) and add a title to the legend box (title). 
+\item The output of a simple
+example using these options is presented in panel (b).
+\end{itemize}
+%============================================================================== %
+
+\begin{framed}
+	\begin{verbatim}
+	 plot(x[:,0],’b’,
+	 label = ’Series 1’)
+	 hold(True)
+	 plot(x[:,1],’g.’,label = ’Series 2’)
+	 plot(x[:,2],’r:’,label = ’Series 3’)
+	 legend(loc = 0, frameon = False, title = ’The Legend’)
+	 title(’Improved Legend’)
+	\end{verbatim}
+\end{framed}
+
+\newpage
+\subsection{Plotting}
+% - http://nbviewer.ipython.org/github/twiecki/financial-analysis-python-tutorial/blob/master/1.%20Pandas%20Basics.ipynb
+
+\begin{framed}
+	\begin{verbatim}
+	close_px.plot(label='AAPL')
+	mavg.plot(label='mavg')
+	plt.legend()
+	
+	\end{verbatim}
+\end{framed}
+
+\end{document}
