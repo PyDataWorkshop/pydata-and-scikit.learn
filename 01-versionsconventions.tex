@@ -4,7 +4,8 @@
 %===========================================================%
 \begin{frame}
 	\frametitle{Versions of Python}
-	
+	\LARGE
+	Two Main Versions of Python
 	\begin{itemize}
 		\item Version 2.7
 		\item Version 3
@@ -14,6 +15,7 @@
 %===========================================================%
 \begin{frame}
 \frametitle{Python Coding Conventions}
+\large
 There are a number of common practices which can be adopted to produce Python code which looks
 more like code found in other modules:
 \begin{itemize}
@@ -29,15 +31,16 @@ more like code found in other modules:
 %===========================================================%
 \begin{frame}
 \frametitle{Python Coding Conventions}
+\large
 \begin{itemize}	
 	\item Use ASCII mode in text editors, not UTF-8
 	\item One module per import line
-	\item Avoid from module import * (for any module). Use either from module import func1, func2 or
-	import module as shortname.
+	\item Avoid from module \texttt{import $\ast$} (for any module). Use either \texttt{from module import func1, func2} or
+	\texttt{import module as shortname}.
 	\item Follow the NumPy guidelines for documenting functions
 \end{itemize}
 
-More suggestions can be found in PEP8.
+% More suggestions can be found in PEP8.
 \end{frame}
 %===========================================================%
 \end{document}
