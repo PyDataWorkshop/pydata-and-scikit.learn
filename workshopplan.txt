@@ -1,0 +1,5 @@
+Part 1 Theory 
+Accuracy , Precision , Recall, Confusion matrices, ROC curve, Specificity, Sensitivity, Misclasfication cost
+Variable selection, Law of Parsimony, Occam's Razor
+Part 2 Regression
+Part 3 Classification
