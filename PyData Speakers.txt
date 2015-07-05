@@ -1,0 +1,8 @@
+Peter Brennan   Dublin (Machine Learning) Dublin R
+David Coallier  Cork
+John McAuley    Dublin (Machine Learning)
+Uli Berthke     Dublin (Hadoop Stuff)
+Jo Fai Chow     London (Domino Data Lab)
+Shane Carey 	Meath  (Geographic Information Systems)
+Matt LundQuist  Canada Keynote plotly
+Sean Owen       London Apache Spark
