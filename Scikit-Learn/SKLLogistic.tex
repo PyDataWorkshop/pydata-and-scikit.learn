@@ -22,7 +22,302 @@
 \tableofcontents
 \newpage
 
-% BL Stands for Binary Logistic
+Machine Learning Mastery
+
+
+The scikit-learn Python library is very easy to get up and running. Nevertheless I see a lot of hesitation from beginners looking get started. In this blog post I want to give a few very simple examples of using scikit-learn for some supervised classification algorithms.
+
+mean-shift clustering algorithm
+
+Scikit-Learn Recipes
+
+You don’t need to know about and use all of the algorithms in scikit-learn, at least initially, pick one or two (or a handful) and practice with only those.
+
+In this post you will see 5 recipes of supervised classification algorithms applied to small standard datasets that are provided with the scikit-learn library.
+
+The recipes are principled. Each example is:
+
+Standalone: Each code example is a self-contained, complete and executable recipe.
+Just Code: The focus of each recipe is on the code with minimal exposition on machine learning theory.
+Simple: Recipes present the common use case, which is probably what you are looking to do.
+Consistent: All code example are presented consistently and follow the same code pattern and style conventions.
+The recipes do not explore the parameters of a given algorithm. They provide a skeleton that you can copy and paste into your file, project or python REPL and start to play with immediately.
+
+These recipes show you that you can get started practicing with scikit-learn right now. Stop putting it off.
+
+Logistic Regression
+
+Logistic regression fits a logistic model to data and makes predictions about the probability of an event (between 0 and 1).
+
+This recipe shows the fitting of a logistic regression model to the iris dataset. Because this is a mutli-class classification problem and logistic regression makes predictions between 0 and 1, a one-vs-all scheme is used (one model per class).
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Logistic Regression
+from sklearn import datasets
+from sklearn import metrics
+from sklearn.linear_model import LogisticRegression
+# load the iris datasets
+dataset = datasets.load_iris()
+# fit a logistic regression model to the data
+model = LogisticRegression()
+model.fit(dataset.data, dataset.target)
+print(model)
+# make predictions
+expected = dataset.target
+predicted = model.predict(dataset.data)
+# summarize the fit of the model
+print(metrics.classification_report(expected, predicted))
+print(metrics.confusion_matrix(expected, predicted))
+For more information see the API reference for Logistic Regression for details on configuring the algorithm parameters. Also see the Logistic Regression section of the user guide.
+
+Naive Bayes
+
+Naive Bayes uses Bayes Theorem to model the conditional relationship of each attribute to the class variable.
+
+This recipe shows the fitting of an Naive Bayes model to the iris dataset.
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Gaussian Naive Bayes
+from sklearn import datasets
+from sklearn import metrics
+from sklearn.naive_bayes import GaussianNB
+# load the iris datasets
+dataset = datasets.load_iris()
+# fit a Naive Bayes model to the data
+model = GaussianNB()
+model.fit(dataset.data, dataset.target)
+print(model)
+# make predictions
+expected = dataset.target
+predicted = model.predict(dataset.data)
+# summarize the fit of the model
+print(metrics.classification_report(expected, predicted))
+print(metrics.confusion_matrix(expected, predicted))
+For more information see the API reference for the Gaussian Naive Bayes for details on configuring the algorithm parameters. Also see the Naive Bayes section of the user guide.
+
+k-Nearest Neighbor
+
+The k-Nearest Neighbor (kNN) method makes predictions by locating similar cases to a given data instance (using a similarity function) and returning the average or majority of the most similar data instances. The kNN algorithm can be used for classification or regression.
+
+This recipe shows use of the kNN model to make predictions for the iris dataset.
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# k-Nearest Neighbor
+from sklearn import datasets
+from sklearn import metrics
+from sklearn.neighbors import KNeighborsClassifier
+# load iris the datasets
+dataset = datasets.load_iris()
+# fit a k-nearest neighbor model to the data
+model = KNeighborsClassifier()
+model.fit(dataset.data, dataset.target)
+print(model)
+# make predictions
+expected = dataset.target
+predicted = model.predict(dataset.data)
+# summarize the fit of the model
+print(metrics.classification_report(expected, predicted))
+print(metrics.confusion_matrix(expected, predicted))
+For more information see the API reference for the k-Nearest Neighbor for details on configuring the algorithm parameters. Also see the k-Nearest Neighbor section of the user guide.
+
+Classification and Regression Trees
+
+Classification and Regression Trees (CART) are constructed from a dataset by making splits that best separate the data for the classes or predictions being made. The CART algorithm can be used for classification or regression.
+
+This recipe shows use of the CART model to make predictions for the iris dataset.
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Decision Tree Classifier
+from sklearn import datasets
+from sklearn import metrics
+from sklearn.tree import DecisionTreeClassifier
+# load the iris datasets
+dataset = datasets.load_iris()
+# fit a CART model to the data
+model = DecisionTreeClassifier()
+model.fit(dataset.data, dataset.target)
+print(model)
+# make predictions
+expected = dataset.target
+predicted = model.predict(dataset.data)
+# summarize the fit of the model
+print(metrics.classification_report(expected, predicted))
+print(metrics.confusion_matrix(expected, predicted))
+For more information see the API reference for CART for details on configuring the algorithm parameters. Also see the Decision Tree section of the user guide.
+
+Support Vector Machines
+
+Support Vector Machines (SVM) are a method that uses points in a transformed problem space that best separate classes into two groups. Classification for multiple classes is supported by a one-vs-all method. SVM also supports regression by modeling the function with a minimum amount of allowable error.
+
+This recipe shows use of the SVM model to make predictions for the iris dataset.
+
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+# Support Vector Machine
+from sklearn import datasets
+from sklearn import metrics
+from sklearn.svm import SVC
+# load the iris datasets
+dataset = datasets.load_iris()
+# fit a SVM model to the data
+model = SVC()
+model.fit(dataset.data, dataset.target)
+print(model)
+# make predictions
+expected = dataset.target
+predicted = model.predict(dataset.data)
+# summarize the fit of the model
+print(metrics.classification_report(expected, predicted))
+print(metrics.confusion_matrix(expected, predicted))
+For more information see the API reference for SVM for details on configuring the algorithm parameters. Also see the SVM section of the user guide.
+
+Summary
+
+In this post you have seen 5 self-contained recipes demonstrating some of the most popular and powerful supervised classification problems.
+
+Each example is less than 20 lines that you can copy and paste and start using scikit-learn, right now. Stop reading and start practicing. Pick one recipe and run it, then start to play with the parameters and see what effect that has on the results.
+
+jumpstart scikitlearn coverTake The Next Step
+
+Are you looking to get started or make the most of the scikit-learn library without getting bogged down with the mathematics and theory of the algorithms?
+
+In this 35-page PDF guide you will discover 35 standalone scikit-learn recipes that you can copy-paste into your project.
+
+Jump-Start Scikit-Learn
+
+Recipes cover data handling, supervised learning algorithm, regularization, ensemble methods and advanced topics like feature selection, cross validation and parameter tuning.
+
+If you want to get up and running with scikit-learn fast, this recipe book is for you!
+
+
+About Jason Brownlee
+Editor and Chief at MachineLearningMastery.com. Dr Brownlee is a husband, father, professional programmer and a machine learning enthusiast. Learn more about him.
+View all posts by Jason Brownlee →
+The Best Machine Learning AlgorithmPrepare Data for Machine Learning in Python with Pandas 
+No comments yet.
+Leave a Reply
+
+Name (required)
+Email (will not be published) (required)
+Website
+
+
+
+Resources you can use to learn faster
+
+Feeling overwhelmed?
+
+Download your guide to the best hand-picked machine learning books, course, tools and other resources.
+
+Machine Learning Resource Guide
+POPULAR
+Weka Results for the ZeroR algorithm on the Iris flower dataset How to Run Your First Classifier in Weka
+FEBRUARY 17, 2014
+Ensemble Learning Method A Tour of Machine Learning Algorithms
+NOVEMBER 25, 2013
+k-Nearest Neighbors algorithm Tutorial To Implement k-Nearest Neighbors in Python From Scratch
+SEPTEMBER 12, 2014
+Discover Feature Engineering, How to Engineer Features and How to Get Good at It
+SEPTEMBER 26, 2014
+naive bayes classifier How To Implement Naive Bayes From Scratch in Python
+DECEMBER 8, 2014
+Books for Machine Learning Beginners Best Machine Learning Resources for Getting Started
+NOVEMBER 27, 2013
+Study a Machine Learning Algorithm 4 Self-Study Machine Learning Projects
+JANUARY 3, 2014
+Mistakes Programmers Make when Starting in Machine Learning 5 Mistakes Programmers Make when Starting in Machine Learning
+JANUARY 29, 2014
+Rank of Features by Importance Feature Selection with the Caret R Package
+SEPTEMBER 22, 2014
+applied predictive modeling Books for Machine Learning with R
+JUNE 30, 2014
+© 2015 Machine Learning Mastery. All Rights Reserved.
+Privacy | Contact | About
+×
+Machine Learning Crash Course
+You can learn and apply Machine Learning even without a background in maths or a fancy degree. Find out how in this ridiculously practical (and totally free) email course.
+
+
+POWERED BY DRIP
 \subfile{BL-IntroductoryTopics}
 %\subfile{CA-DistanceMeasures}
 %\subfile{CA-Linkage}
